@@ -1,0 +1,10 @@
+FakeIndianNote
+IndianNote
+Nu. 1
+Nu. 10
+Nu. 100
+Nu. 1000
+Nu. 20
+Nu. 5
+Nu. 50
+Nu. 500
