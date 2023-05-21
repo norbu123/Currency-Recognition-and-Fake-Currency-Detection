@@ -1,0 +1,24 @@
+
+
+
+.eight h1 {
+    text-align:center;
+    margin-top:45px;
+    text-transform:uppercase;
+    color: #F7931E;
+    font-size:26px; letter-spacing:1px;
+    font-family: fantasy; 
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 16px 0;
+    grid-gap: 22px;
+  }
+  .eight h1:after,.eight h1:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #F7931E;
+
+  }
+  
+  
+  
