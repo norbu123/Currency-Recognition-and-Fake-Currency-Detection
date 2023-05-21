@@ -14,7 +14,6 @@
         color: black;
       }
       .result{
-        /* background-color: #F7931E; */
         width: 40%;
         line-height: 50px;
         margin-left: 30%;
@@ -27,7 +26,6 @@
     <div id="root">
       <div id="header">
         <div id="btnDiv">
-          <!-- <button class="back-btn"><i class="fas fa-arrow-left"></i></button> -->
           <a href="{%url 'home'%}"><i class="fas fa-arrow-left"></i></a>
         </div>
         <div id="headerDiv">
@@ -39,11 +37,9 @@
         <div id="innerDiv">
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            
             <label for="image">Upload an image:</label>
             <input type="file" name="image" accept="image/*" required value="Select Image" class="predictBtn">
             <br/><br/>
-
             <button 
             type="submit" 
             class="btn"
@@ -59,17 +55,20 @@
             text-align:center;
             color: white;
             ">Predict</p>
-
             </button>
             <br/>
+            {% if loading %}
+            <div class="loading-indicator" style="color: black;">Loading...</div>
+          {% else %}
+            {% if prediction %}
             <p class="result" style="font-family: fantasy; font-weight: 300;">Result: {{ prediction }}</p>
+            {% endif %}
+          {% endif %}
             <p>OR</p>
           </form>
           <br/>
           <i class="fa fa-camera fa-2x" style="color: #F7931E;"></i>
           <br/>
-          <!-- <button onclick="navigateToPage2()">Open camera to predict</button> -->
-
           <button 
             onclick="navigateToPage2()"
             type="submit" 
@@ -88,7 +87,7 @@
             font-family: fantasy;
             text-align:center;
             ;">Open camera to predict</p>
-
+          </button>    
         </div>
         <div id="video-container"></div>
       </div>

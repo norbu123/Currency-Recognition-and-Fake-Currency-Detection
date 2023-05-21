@@ -39,10 +39,7 @@ body{
 	transition : all 0.3s ease-out;
 }
 .navigation-wrap{
-	/* position: fixed; */
 	width: 100%;
-
-	/* z-index: 1000; */
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
@@ -156,12 +153,10 @@ body{
 	top: 50%;
 	left: 0;
 	width: 100%;
-  margin-top: 40px;
+  	margin-top: 40px;
 	transform: translateY(-50%);
 	z-index: 20;
 }
-
-
 #switch,
 #circle {
 	cursor: pointer;
@@ -298,7 +293,6 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
-
 @media (max-width: 767px) { 
 	h1{
 		font-size: 38px;
@@ -309,7 +303,6 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	.nav-item::before {
 		position: absolute;
 		display: block;
-		/* top: 15px; */
 		left: 0;
 		width: 11px;
 		height: 1px;

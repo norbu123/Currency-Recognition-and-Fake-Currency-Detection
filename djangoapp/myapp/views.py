@@ -53,6 +53,8 @@ def decode_prediction(prediction):
     
     return label
 
+import time
+
 def classify_image(request):
     if request.method == 'POST':
         # Load the model from the file
@@ -63,19 +65,28 @@ def classify_image(request):
         image = request.FILES['image']
         image_array = preprocess_image(image)
         
+        # Add a loading indicator
+        loading = True
+        request.loading = loading
+        time.sleep(2)  # Simulating the prediction process
+        
         # Make a prediction using the model
         prediction = model.predict(image_array)
         label = decode_prediction(prediction)
         
+        # Remove the loading indicator
+        loading = False
+        request.loading = loading
+        
         # Add the prediction to the request object
         request.prediction = label
         
-    return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None)})
+    return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None), 'loading': getattr(request, 'loading', False)})
 
 
 def classify_captured_image(request):
     # Load the model from the file
-    model_path = os.path.join(settings.BASE_DIR, 'models', 'currency.h5')
+    model_path = os.path.join(settings.BASE_DIR, 'models', 'currencyDetector.h5')
     model = load_model(model_path)
     
     # Start the video capture
@@ -103,7 +114,7 @@ def classify_captured_image(request):
         
         # Display the classification result on the video capture window
         cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-        cv2.imshow('Classification Result', frame)
+        cv2.imshow('Identification Result', frame)
         
         # Wait for the user to press a key
         key = cv2.waitKey(1)
@@ -111,7 +122,6 @@ def classify_captured_image(request):
         # If the user presses the 'q' key, exit the loop
         if key == ord('q'):
             break
-    
     # Release the video capture and destroy the window
     cap.release()
     cv2.destroyAllWindows()
@@ -120,7 +130,6 @@ def classify_captured_image(request):
 
     # return render(request, 'result.html', {'prediction': label})
     return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None)})
-
 
 def home(request):
     return render(request, 'home.html')
