@@ -99,8 +99,8 @@ def classify_captured_image(request):
         ret, frame = cap.read()
 
         # Check if a valid frame was obtained
-        if not ret:
-            break
+        #if not ret:
+           # break
 
         # Resize the frame
         frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
