@@ -96,6 +96,10 @@ def classify_captured_image(request):
         # Read a frame from the video capture
         ret, frame = cap.read()
         
+        # Check if a valid frame was obtained
+        if not ret:
+            break
+        
         # Resize the frame
         frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
         
@@ -122,13 +126,13 @@ def classify_captured_image(request):
         # If the user presses the 'q' key, exit the loop
         if key == ord('q'):
             break
+    
     # Release the video capture and destroy the window
     cap.release()
     cv2.destroyAllWindows()
 
     request.prediction = label
 
-    # return render(request, 'result.html', {'prediction': label})
     return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None)})
 
 def home(request):
