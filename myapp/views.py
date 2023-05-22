@@ -8,7 +8,7 @@ from PIL import Image
 import cv2
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
-
+from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -143,8 +143,8 @@ def classify_captured_image(request):
 
     request.prediction = label
 
-    # return render(request, 'result.html', {'prediction': label})
-    return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None)})
+   # Return an HttpResponse object with the desired response
+    return HttpResponse(render(request, 'form.html', {'prediction': getattr(request, 'prediction', None)}))
 
 def home(request):
     return render(request, 'home.html')
