@@ -144,8 +144,10 @@ def classify_captured_image(request):
     request.prediction = label
 
    # Return an HttpResponse object with the desired response
-    return HttpResponse(render(request, 'form.html', {'prediction': getattr(request, 'prediction')}))
+    return HttpResponse(render(request, 'form.html'))
 
+    #{'prediction}: getattr(request, 'prediction')}
+    
 def home(request):
     return render(request, 'home.html')
 
