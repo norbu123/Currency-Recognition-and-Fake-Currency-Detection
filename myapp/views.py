@@ -92,6 +92,13 @@ def classify_captured_image(request):
     # Start the video capture
     cap = cv2.VideoCapture(0)
     
+    # Check if the video capture is successfully opened
+    if not cap.isOpened():
+        # Handle the case when the video capture fails to open
+        print("Failed to open the video capture.")
+        # Optionally, you can return an error response or perform appropriate error handling
+        return
+    
     while True:
         # Read a frame from the video capture
         ret, frame = cap.read()
