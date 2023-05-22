@@ -84,6 +84,9 @@ def classify_image(request):
         
     return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None), 'loading': getattr(request, 'loading', False)})
 
+import cv2
+import numpy as np
+
 def classify_captured_image(request):
     # Load the model from the file
     model_path = os.path.join(settings.BASE_DIR, 'models', 'currencyDetector.h5')
@@ -99,8 +102,16 @@ def classify_captured_image(request):
         ret, frame = cap.read()
 
         # Check if a valid frame was obtained
-        #if not ret:
-           # break
+        if not ret:
+            # Display an error message or perform alternative action
+            print("Failed to retrieve frame from the camera")
+            continue
+
+        # Check if the frame size is empty
+        if frame.size == 0:
+            # Display an error message or perform alternative action
+            print("Empty frame size. Skipping the frame.")
+            continue
 
         # Resize the frame
         frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
@@ -136,6 +147,7 @@ def classify_captured_image(request):
     request.prediction = label
 
     return render(request, 'form.html', {'prediction': getattr(request, 'prediction', None)})
+
 
 def home(request):
     return render(request, 'home.html')
