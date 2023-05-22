@@ -103,6 +103,14 @@ def classify_captured_image(request):
         # Read a frame from the video capture
         ret, frame = cap.read()
         
+        if not ret:
+            # Handle the case when frame retrieval fails
+            print("Failed to retrieve frame from the video capture.")
+            # Optionally, you can return an error response or perform appropriate error handling
+            break
+        # Print the frame dimensions (optional)
+        print("Frame dimensions:", frame.shape)
+        
         # Resize the frame
         frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
         
