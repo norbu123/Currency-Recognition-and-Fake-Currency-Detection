@@ -8,7 +8,7 @@ contourpy
 cycler==0.11.0
 Django
 flatbuffers==23.3.3
-fonttools==4.39.3
+fonttools
 gast==0.4.0
 google-auth==2.17.3
 google-auth-oauthlib==1.0.0
