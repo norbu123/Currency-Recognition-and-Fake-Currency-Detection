@@ -30,7 +30,7 @@ opencv-python==4.7.0.72
 opt-einsum==3.3.0
 packaging==23.1
 Pillow==9.5.0
-protobuf==4.22.3
+protobuf==3.20
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pyparsing==3.0.9
