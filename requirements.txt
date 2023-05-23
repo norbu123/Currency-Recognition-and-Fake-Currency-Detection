@@ -26,6 +26,7 @@ MarkupSafe==2.1.2
 matplotlib
 numpy
 oauthlib==3.2.2
+opencv
 opencv-python==4.7.0.72
 opt-einsum==3.3.0
 packaging==23.1
