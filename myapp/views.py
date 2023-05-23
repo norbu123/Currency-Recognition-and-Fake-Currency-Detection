@@ -104,7 +104,7 @@ def classify_captured_image(request):
         # Check if a valid frame was obtained
         #if not ret:
             # Display an error message or perform alternative action
-            print("Failed to retrieve frame from the camera")
+            #print("Failed to retrieve frame from the camera")
           #  continue
 
         # Check if the frame size is empty
