@@ -102,16 +102,16 @@ def classify_captured_image(request):
         ret, frame = cap.read()
 
         # Check if a valid frame was obtained
-        if not ret:
+        #if not ret:
             # Display an error message or perform alternative action
             print("Failed to retrieve frame from the camera")
-            continue
+          #  continue
 
         # Check if the frame size is empty
-        if frame.size == 0:
+       # if frame.size == 0:
             # Display an error message or perform alternative action
             print("Empty frame size. Skipping the frame.")
-            continue
+         #   continue
 
         # Resize the frame
         frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
