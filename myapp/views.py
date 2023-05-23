@@ -110,7 +110,7 @@ def classify_captured_image(request):
         # Check if the frame size is empty
        # if frame.size == 0:
             # Display an error message or perform alternative action
-            print("Empty frame size. Skipping the frame.")
+            #print("Empty frame size. Skipping the frame.")
          #   continue
 
         # Resize the frame
