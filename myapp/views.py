@@ -114,7 +114,10 @@ def classify_captured_image(request):
          #   continue
 
         # Resize the frame
-        frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
+        #frame_resized = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
+        # Resize the frame
+        frame_resized = cv2.resize(frame, dsize=(224, 224))
+
 
         # Convert the frame to a numpy array
         frame_array = np.array(frame_resized)
